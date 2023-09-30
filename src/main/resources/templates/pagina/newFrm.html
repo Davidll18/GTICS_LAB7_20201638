@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Nuevo Equipo')}"></head>
+    <body>
+    <div class="container">
+        <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Tecnicos')}"></nav>
+        <form method="post" th:action="@{'/save'}" >
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <input type="hidden" name="habilitado" id="habilitado" value="1">
+                    <h2>Editar Tecnico</h2>
+                    <hr/>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <input name="firstName" type="text" class="form-control" id="firstName" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name:</label>
+                        <input name="lastName" type="text" class="form-control" id="lastName" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI:</label>
+                        <input name="dni" type="number" class="form-control" id="dni" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone:</label>
+                        <input name="phone" type="number" class="form-control" id="phone" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age:</label>
+                        <input name="age" type="number" class="form-control" id="age" />
+                    </div>
+                    <a th:href="@{'/listaTec'}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+        <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+    </body>
+</html>
