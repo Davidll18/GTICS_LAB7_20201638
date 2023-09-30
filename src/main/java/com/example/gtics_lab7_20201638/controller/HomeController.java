@@ -1,6 +1,8 @@
 package com.example.gtics_lab7_20201638.controller;
 
+import com.example.gtics_lab7_20201638.entity.Site;
 import com.example.gtics_lab7_20201638.entity.Technician;
+import com.example.gtics_lab7_20201638.repository.SiteRepository;
 import com.example.gtics_lab7_20201638.repository.TechnicianRepository;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -20,9 +22,12 @@ import java.util.Optional;
 public class HomeController {
     final TechnicianRepository technicianRepository;
 
-    public HomeController(TechnicianRepository technicianRepository){
+    final SiteRepository siteRepository;
+
+    public HomeController(TechnicianRepository technicianRepository, SiteRepository siteRepository){
 
         this.technicianRepository = technicianRepository;
+        this.siteRepository = siteRepository;
     }
     @RequestMapping(value = "/")
     public String paginaPrincipal(){
@@ -35,6 +40,16 @@ public class HomeController {
         model.addAttribute("tecList", tecList);
 
         return "pagina/tecnico";
+
+
+    }
+
+    @RequestMapping("/listSite")
+    public String sitio(Model model){
+        List<Site> listSite = siteRepository.findAll();
+        model.addAttribute("listSite", listSite);
+
+        return "pagina/sitio";
 
 
     }
